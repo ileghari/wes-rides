@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
+import Welcome from './components/Welcome';
+import Offer from './components/Offer';
+import Request from './components/Request';
+import OfferForm from './components/OfferForm';
+import RequestForm from './components/RequestForm';
 
 function App() {
+
+  const [page, setPage] = useState("welcome");
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {page == "welcome" ? <Welcome setPage = {setPage} /> : null}
+      {page == "offers" ? <Offer setPage = {setPage} /> : null}
+      {page == "requests" ? <Request setPage = {setPage} /> : null}
+      {page == "offer_form" ? <OfferForm setPage = {setPage} /> : null}
+      {page == "request_form" ? <RequestForm setPage = {setPage} /> : null}
+      
     </div>
   );
 }
